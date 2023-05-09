@@ -1,0 +1,21 @@
+{% extends "layout.html" %}
+
+{% block content %}
+  <h2>Bus {{ data.vehicle.id }}</h2>
+  <p>Current position: {{ data.position.latitude }}, {{ data.position.longitude }}</p>
+  <p>Timestamp: {{ data.position.timestamp }}</p>
+  <h3>Trip Details</h3>
+  <p>Trip ID: {{ data.trip.trip_id }}</p>
+  <p>Start Time: {{ data.trip.start_time }}</p>
+  <p>Start Date: {{ data.trip.start_date }}</p>
+  <p>Schedule Relationship: {{ data.trip.schedule_relationship }}</p>
+  <p>Route ID: {{ data.trip.route_id }}</p>
+  <p>Direction ID: {{ data.trip.direction_id }}</p>
+  <h3>Carriage Details</h3>
+  {% for carriage in data.vehicle.multi_carriage_details %}
+    <p>Carriage {{ carriage.carriage_sequence }}</p>
+    <p>ID: {{ carriage.id }}</p>
+    <p>Label: {{ carriage.label }}</p>
+    <p>Occupancy Status: {{ carriage.occupancy_status }}</p>
+  {% endfor %}
+{% endblock %}
